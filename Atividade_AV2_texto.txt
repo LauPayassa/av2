@@ -1,0 +1,88 @@
+AV2 – Trabalho Prático: Comparação de Algoritmos de Ordenação
+16 de outubro de 2025
+
+Análise de Algoritmos de Ordenação
+
+Objetivo
+Projetar e implementar um sistema modular (Java) para comparar, de forma teórica e experimental, os algoritmos Merge Sort, Heap Sort e Quick Sort, utilizando princípios de Programação Orientada a Objetos (POO) e relatando os resultados em tabelas padronizadas.
+
+Descrição
+Você deverá desenvolver um programa que:
+1. Gere conjuntos de dados (datasets) com diferentes distribuições:
+• Aleatória (uniforme)
+• Quase ordenada (10% de perturbação)
+• Reversa (estritamente decrescente)
+• Com muitos repetidos (amostragem de poucos valores distintos)
+
+2. Implemente os algoritmos:
+• Merge Sort (dividir e conquistar, estável)
+• Heap Sort (árvore implícita em vetor, não estável)
+• Quick Sort (particionamento; escolha de pivô configurável)
+
+3. Meça desempenho experimental para diferentes tamanhos n (ex.: n ∈ {10³, 10⁴, 5·10⁴, 10⁵}):
+• Tempo de execução (ms ou ns)
+• Contadores: comparações, trocas/movimentos
+• Média de k repetições por cenário (ex.: k = 5)
+
+4. Produza análise comparativa:
+• Teórica: melhor, médio e pior caso (ordens assintóticas)
+• Prática: tempos medidos, variância e observações
+
+5. Apresente resultados
+
+Complexidades Teóricas (Resumo)
+Algoritmo | Melhor Caso | Caso Médio | Pior Caso
+Merge Sort | O(n log n) | O(n log n) | O(n log n)
+Heap Sort | O(n log n) | O(n log n) | O(n log n)
+Quick Sort (pivô ingênuo) | O(n log n) | O(n log n) | O(n²)
+Quick Sort (pivô aleatório/mediana) | O(n log n) | O(n log n) | O(n log n) (esperado)
+
+Fluxo do Programa
+1. Ler configurações (tamanhos n, distribuições, k, política de pivô).
+2. Para cada distribuição e tamanho n:
+(a) Gerar vetor base (e clonar para cada algoritmo).
+(b) Executar MergeSort, HeapSort e QuickSort (com k repetições).
+(c) Medir tempo, contar comparações/trocas, checar ordenação.
+(d) Registrar resultados (Result).
+3. Consolidar e exibir tabela(s).
+4. Exibir síntese: qual algoritmo performou melhor em cada cenário e por quê.
+
+Tabela–Modelo de Resultados
+n | Distribuição | Algoritmo | Teórico | Prático | Tempo Médio (ms) | #Comp. | #Trocas/Moves
+10³ | Aleatória | Merge Sort | O(n log n) | O(n log n)
+10³ | Aleatória | Heap Sort | O(n log n) | O(n log n)
+10³ | Aleatória | Quick Sort | O(n log n) | O(n log n)
+10⁴ | Aleatória | Merge Sort | O(n log n)
+10⁴ | Aleatória | Heap Sort | O(n log n)
+10⁴ | Aleatória | Quick Sort | O(n log n)
+... repetir para demais distribuições e tamanhos n ...
+
+Análise e Conclusão
+Após preencher a tabela com os resultados obtidos experimentalmente, o aluno deve realizar uma análise comparativa entre os algoritmos de ordenação, considerando os seguintes aspectos:
+• O tempo médio de execução (em milissegundos);
+• O número de comparações realizadas;
+• O número de trocas ou movimentações de elementos.
+
+Com base nesses dados, o aluno deverá:
+1. Identificar qual algoritmo apresentou o melhor desempenho geral em cada tipo de distribuição e tamanho n.
+Exemplo de resposta: “Entre os algoritmos testados, o Quick Sort apresentou o menor tempo médio e o melhor desempenho geral para os casos de entrada aleatória.”
+
+Síntese Analítica
+• Observações: relacione comportamento prático com teoria (ex.: Quick com pivô ruim degrada para O(n²) em reverso).
+• Estabilidade: Merge é estável; Heap/Quick não (na forma clássica).
+• Uso de memória: Merge requer vetor auxiliar O(n); Heap/Quick in-place (Quick recursivo usa pilha).
+• Constantes ocultas: comente impactos e fatores de implementação.
+
+Entrega
+• Arquitetura POO e organização do código (20%)
+• Implementação correta dos algoritmos (25%)
+• Metodologia experimental (configuração, repetição, reprodutibilidade) (20%)
+• Análise teórica (melhor/médio/pior) e discussão dos resultados (25%)
+• Clareza do relatório e tabela(s) finais (10%)
+
+Dicas
+• Valide a ordenação após cada execução (assegura corretude).
+• Fixe seed para comparar algoritmos sob entradas idênticas.
+• Para Quick Sort, avalie políticas de pivô (aleatório, mediana-de-três).
+• Faça warm-up (JVM) antes de medir tempos em Java.
+• Documente versão do compilador/JDK e máquina utilizada.
