@@ -1,0 +1,39 @@
+import java.util.Random;
+
+public class DatasetGenerator {
+    private static final Random rnd = new Random(42); // Semente fixa para reprodutibilidade
+
+    // Aleatória (uniforme)
+    public static int[] random(int n) {
+        int[] v = new int[n];
+        for (int i = 0; i < n; i++) v[i] = rnd.nextInt(n * 10);
+        return v;
+    }
+
+    // Quase ordenada (10% de perturbação)
+    public static int[] almostSorted(int n) {
+        int[] v = new int[n];
+        for (int i = 0; i < n; i++) v[i] = i;
+        // Perturba 10% dos elementos
+        for (int i = 0; i < n / 10; i++) {
+            int a = rnd.nextInt(n), b = rnd.nextInt(n);
+            int tmp = v[a]; v[a] = v[b]; v[b] = tmp;
+        }
+        return v;
+    }
+
+    // Reversa (estritamente decrescente)
+    public static int[] reversed(int n) {
+        int[] v = new int[n];
+        for (int i = 0; i < n; i++) v[i] = n - i;
+        return v;
+    }
+
+    // Muitos repetidos (amostragem de poucos valores distintos)
+    public static int[] manyRepeated(int n) {
+        int[] v = new int[n];
+        int distintas = Math.max(2, n / 100); // Ex: para 1000 elementos, 10 distintos
+        for (int i = 0; i < n; i++) v[i] = rnd.nextInt(distintas);
+        return v;
+    }
+}
